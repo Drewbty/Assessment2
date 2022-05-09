@@ -98,22 +98,58 @@ public class Fruit implements java.lang.Comparable<Fruit> {
 	public int compareTo(Fruit o) {
 		if (getType() == TYPE.PEAR) {
 			if (o.getType() == TYPE.PEAR) {
-				if (Math.abs(getRipeness() - o.getRipeness()) <= DELTA_DIFF ) {
-					return 0;
-				}else if (getRipeness() > o.getRipeness()) {
-					return 1;
-				}
-				else {
-					return -1;
-				}
+				return compareRipeness(o);
 			}
 			return 1;
 		}
 		
+		if (getType() == TYPE.BANANA) {
+			if (o.getType() == TYPE.BANANA) {
+				return compareRipeness(o);
+			}else {
+				return -1;
+			}
+		}
+		if (getType() == TYPE.GRAPE || getType() == TYPE.APPLE) {
+			if (o.getType() == TYPE.PEAR) {
+				return -1;
+			}else if (o.getType() == TYPE.BANANA) {
+				return 1;
+				
+			}else {
+				int comparisonWeight = compareWeight(o);
+				if (comparisonWeight != 0) {
+					return comparisonWeight;
+				}
+				
+				return compareRipeness(o);
+			}
+		}
 		
 		return 0;
 	}
+
+	private int compareWeight(Fruit o) {
+		if (Math.abs(getWeight() - o.getWeight()) <= DELTA_DIFF ) {
+			return 0;
+		}else if (getWeight() > o.getWeight()) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
 	
-	
+
+	private int compareRipeness(Fruit o) {
+		if (getRipeness() == o.getRipeness()) {
+			return 0;
+		}else if (getRipeness() > o.getRipeness()) {
+			return 1;
+		}
+		else {
+			return -1;
+		}
+	}
 
 }
