@@ -43,11 +43,24 @@ public class CustomSorting {
 	 * @return	   A sorted list. 
 	 */
 	public static List<Fruit> sortByRipeness(List<Fruit> list) {
-		return null;
-		/*
-		return list.sort(new Comparator<Fruit>() {
-			// Implement your custom compare method here. 
+		list.sort(new Comparator<Fruit>() {
+
+			@Override
+			public int compare(Fruit o1, Fruit o2) {
+				double o1Ripe = o1.getRipeness();
+				double o2Ripe = o2.getRipeness();
+				if (o1Ripe < o2Ripe) {
+					return -1;
+				} else if 
+					(o1Ripe > o2Ripe) {
+						return 1;
+					} else {
+						return 0;
+					}
+				}
+
 		});
-		*/
+		
+		return list;
 	}
 }
