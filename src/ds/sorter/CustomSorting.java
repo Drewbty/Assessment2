@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import ds.fruit.Fruit;
+import ds.fruit.Fruit.TYPE;
 
 public class CustomSorting {
 
@@ -18,12 +19,19 @@ public class CustomSorting {
 	 * @return A sorted list. 
 	 */
 	public static List<Fruit> sortByType(List<Fruit> list) {
-		return null;
-		/*
-		return list.sort(new Comparator<Fruit>() {
-			// Implement your custom compare method here. 
-		});
-		*/
+		Comparator<Fruit> comparator = new Comparator<Fruit>() {
+
+			@Override
+			public int compare(Fruit o1, Fruit o2) {
+				String o1Type = o1.getType().name();
+				String o2Type = o2.getType().name();
+				return o1Type.compareTo(o2Type);
+			}
+			
+		};
+		list.sort(comparator);
+		
+		return list;
 	}
 	
 	

@@ -85,6 +85,9 @@ public class Fruit implements java.lang.Comparable<Fruit> {
 			return true;
 		if (obj == null)
 			return false;
+		if (hashCode() != obj.hashCode()) {
+			return false;
+		}
 		if (getClass() != obj.getClass())
 			return false;
 		Fruit other = (Fruit) obj;
