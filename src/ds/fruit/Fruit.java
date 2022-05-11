@@ -10,7 +10,6 @@ public class Fruit implements java.lang.Comparable<Fruit> {
 	}
 	
 	private TYPE type;
-
 	private double weight;
 	private double ripeness;
 
