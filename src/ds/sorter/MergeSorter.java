@@ -36,13 +36,13 @@ public class MergeSorter<E extends Comparable<E>> implements Sorter<E> {
 		mergeSort(r, n - mid);
 
 		// merge them
-		merge(a, l, r, mid, n - mid);
+		merge(a, l, r);
 	}
 
-	public void merge(Object[] a, Object[] l, Object[] r, int left, int right) {
+	public void merge(Object[] a, Object[] l, Object[] r) {
 
 		int i = 0, j = 0, k = 0;
-		while (i < left && j < right) {
+		while (i < l.length && j < r.length) {
 			E leftElement = (E) l[i]; // we know they are comparable, so we cast them back.
 			E rightElement = (E) r[i];
 			if (leftElement.compareTo(rightElement) <= 0) {
@@ -53,14 +53,15 @@ public class MergeSorter<E extends Comparable<E>> implements Sorter<E> {
 				a[k++] = r[j++];
 			}
 		}
-		while (i < left) {
+		while (i < l.length) {
 			// some remaining items in the left, we add them
 			a[k++] = l[i++];
 		}
-		while (j < right) {
+		while (j < r.length) {
 			// in case there were remainers in the right, we add them.
 			a[k++] = r[j++];
 		}
 	}
 
 }
+

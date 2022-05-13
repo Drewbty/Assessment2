@@ -10,7 +10,7 @@ public class SelectionSorter<E extends Comparable<E>> implements Sorter<E> {
 		Object[] items = input.toArray();
 		int n = items.length;
 		 
-        // Move outer limit of unsorted subarray
+        // Move outer boundary of unsorted subarray
         for (int i = 0; i < n-1; i++)
         {
             // Find minimum element in unsorted array
@@ -20,7 +20,7 @@ public class SelectionSorter<E extends Comparable<E>> implements Sorter<E> {
                 	minimum = j;        	
                 }
  
-            // Swap the found minimum element with the first element of the outer limit
+            // Swap the found minimum element with the first element of the outer boundary
             Object temp = items[minimum];
             items[minimum] = items[i];
             items[i] = temp;
