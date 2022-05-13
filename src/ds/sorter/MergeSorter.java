@@ -58,7 +58,7 @@ public class MergeSorter<E extends Comparable<E>> implements Sorter<E> {
 			a[k++] = l[i++];
 		}
 		while (j < r.length) {
-			// in case there were remainers in the right, we add them.
+			// in case there were remainders on the right, we add them.
 			a[k++] = r[j++];
 		}
 	}

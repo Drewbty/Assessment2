@@ -38,7 +38,7 @@ public class TimSorter<E extends Comparable<E>> implements Sorter<E> {
     	// We create this instance to call the merge method.
     	MergeSorter<E> mergeSortInstance = new MergeSorter<>();
     	
-        // Let's sort the small parts first with insertion sort
+        // Sort the small parts first with insertion sort
         for (int i = 0; i < n; i += MIN_RUN_SIZE)
         {
             insertionSort(item, i, Math.min((i + MIN_RUN_SIZE - 1), (n - 1)));
@@ -46,7 +46,7 @@ public class TimSorter<E extends Comparable<E>> implements Sorter<E> {
  
         for (int size = MIN_RUN_SIZE; size < n; size = 2 * size)
         {
-        	// Let's merge the subsorted smaller arrays.
+        	// Merge the subsorted smaller arrays.
             for (int left = 0; left < n; left += 2 * size)
             {
                 int mid = left + size - 1;
@@ -63,7 +63,7 @@ public class TimSorter<E extends Comparable<E>> implements Sorter<E> {
                       {
                     	  rightArray[x] = item[mid + 1 + x];
                       }
-                      // Lets put them into a temporary array, so we can use the previous merge we created.
+                      // Put them into a temporary array, so we can use the previous merge we created.
                       Object [] merged = new Object[leftArray.length+rightArray.length];
                       
                       mergeSortInstance.merge(merged, leftArray, rightArray);
